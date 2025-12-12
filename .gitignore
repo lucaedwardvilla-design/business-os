@@ -1,0 +1,29 @@
+# Environment variables (never commit secrets!)
+.env
+.env.local
+.env.*.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+venv/
+.venv/
+
+# Node (if you add any JS skills)
+node_modules/
+
+# Personal files you might not want to share
+workspace/journal/
+context/business/*.md
+!context/business/README.md
