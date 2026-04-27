@@ -21,10 +21,12 @@ ENGINE_DIR = Path(__file__).resolve().parent
 BUSINESS_OS = ENGINE_DIR.parent.parent  # business-os/
 CLIENTS_DIR = BUSINESS_OS / "clients"
 
-REQUIRED_TOP_KEYS = {"name", "active", "site", "language", "cadence",
-                     "publish_day", "publish_time", "timezone",
+REQUIRED_TOP_KEYS = {"name", "active", "site", "language",
+                     "publish_time", "timezone",
                      "min_quality_score", "voice_file", "telegram_chat_id",
                      "audit_file", "content_plan_file"}
+# Either `publish_days: [mon, thu]` (preferred) or legacy `publish_day: mon` is required.
+# `cadence` is derived from publish_days length when not given.
 REQUIRED_SITE_KEYS = {"url", "cms", "api_user_env", "api_password_env"}
 
 
@@ -38,8 +40,7 @@ class ClientConfig:
     api_user: str
     api_password: str
     language: str
-    cadence: str               # weekly | biweekly | monthly
-    publish_day: str           # mon..sun
+    publish_days: list[str]    # ["mon"] for 1/wk, ["mon", "thu"] for 2/wk, etc.
     publish_time: str          # HH:MM (local TZ)
     timezone: str
     min_quality_score: int
@@ -49,6 +50,17 @@ class ClientConfig:
     audit_file: Path
     content_plan_file: Path
     publish_log_file: Path
+
+    @property
+    def posts_per_week(self) -> int:
+        return max(1, len(self.publish_days))
+
+    @property
+    def cadence_label(self) -> str:
+        n = self.posts_per_week
+        if n == 1:
+            return "weekly"
+        return f"{n}x/week"
 
     @property
     def voice(self) -> str:
@@ -112,6 +124,23 @@ def load_client(name: str) -> ClientConfig:
             "not set in business-os/.env"
         )
 
+    # publish_days (list) is the modern field. Fall back to legacy publish_day (string)
+    # for older configs. Either must be present.
+    raw_days = cfg.get("publish_days")
+    if isinstance(raw_days, list) and raw_days:
+        publish_days = [str(d).strip().lower()[:3] for d in raw_days]
+    elif isinstance(cfg.get("publish_day"), str):
+        publish_days = [cfg["publish_day"].strip().lower()[:3]]
+    else:
+        raise ValueError(
+            f"{name}: client.yaml needs either publish_days (list) or publish_day (string)"
+        )
+
+    valid_days = {"mon", "tue", "wed", "thu", "fri", "sat", "sun"}
+    bad = [d for d in publish_days if d not in valid_days]
+    if bad:
+        raise ValueError(f"{name}: invalid publish_days entries: {bad}")
+
     return ClientConfig(
         name=cfg["name"],
         active=bool(cfg["active"]),
@@ -121,8 +150,7 @@ def load_client(name: str) -> ClientConfig:
         api_user=api_user,
         api_password=api_password,
         language=cfg["language"],
-        cadence=cfg["cadence"],
-        publish_day=cfg["publish_day"].lower(),
+        publish_days=publish_days,
         publish_time=cfg["publish_time"],
         timezone=cfg["timezone"],
         min_quality_score=int(cfg["min_quality_score"]),

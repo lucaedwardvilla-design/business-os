@@ -56,19 +56,46 @@ DAY_MAP = {"mon": 0, "tue": 1, "wed": 2, "thu": 3, "fri": 4, "sat": 5, "sun": 6}
 
 
 def is_due_today(cfg: ClientConfig, log_entries: list[dict]) -> bool:
-    """Has the client's cadence elapsed since last published post?"""
+    """Should this client publish today?
+
+    Two conditions: today's weekday must be in cfg.publish_days, AND there must
+    not already be a successful publish (or draft) for today (avoid double-firing).
+    Min-gap between posts is implicit: with publish_days=[mon,thu] you get a 3-4 day
+    gap; with [mon] you get 7 days.
+    """
     tz = ZoneInfo(cfg.timezone)
     today = datetime.now(tz).date()
 
-    if today.weekday() != DAY_MAP[cfg.publish_day]:
+    weekday_short = today.strftime("%a").lower()[:3]
+    if weekday_short not in cfg.publish_days:
         return False
 
-    last = _last_published_date(log_entries)
-    if last is None:
-        return True
+    # Don't publish twice on the same day. Look at the most recent log entry of any
+    # type that resulted in a draft or publish (validation_failed entries don't count).
+    last_action = _last_action_date(log_entries)
+    if last_action is not None and last_action >= today:
+        return False
 
-    interval = {"weekly": 7, "biweekly": 14, "monthly": 30}.get(cfg.cadence, 7)
-    return (today - last) >= timedelta(days=interval - 1)
+    return True
+
+
+def _last_action_date(log_entries: list[dict]) -> date | None:
+    """Most recent date with status drafted | published (state-changing actions)."""
+    relevant = [e for e in log_entries if e.get("status") in ("drafted", "published")]
+    if not relevant:
+        return None
+    dates: list[date] = []
+    for e in relevant:
+        for key in ("published_at", "date"):
+            v = e.get(key)
+            if not v:
+                continue
+            try:
+                dates.append(date.fromisoformat(str(v)[:10]))
+                break
+            except ValueError:
+                continue
+    return max(dates) if dates else None
 
 
 def _last_published_date(log_entries: list[dict]) -> date | None:

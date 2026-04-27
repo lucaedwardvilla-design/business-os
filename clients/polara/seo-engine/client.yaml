@@ -10,8 +10,10 @@ site:
   api_user_env: POLARA_WP_USER
   api_password_env: POLARA_WP_APP_PASSWORD
 language: it
-cadence: weekly
-publish_day: mon
+# 2 posts/week — Mon (high-intent decision-makers' weekly planning)
+# and Thu (queued for weekend reading). Alternate clusters across the
+# two days to avoid keyword cannibalization.
+publish_days: [mon, thu]
 publish_time: "09:00"
 timezone: Europe/Rome
 min_quality_score: 75
