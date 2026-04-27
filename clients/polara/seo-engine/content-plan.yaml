@@ -1,0 +1,234 @@
+# Polara AI — Content Plan
+#
+# 5 pillar clusters x 5 posts each = 25 slots = ~6 months at 1/week.
+# Refresh quarterly with DataForSEO MCP — drop non-ranking pillars, add new ones.
+#
+# Volumes/KD below are placeholder estimates. Run DataForSEO + update before
+# activating.
+
+clusters:
+  - cluster_id: agenzia-ai-milano
+    pillar_keyword: agenzia ai milano
+    intent: commercial
+    semantic_neighbors:
+      - intelligenza artificiale per aziende
+      - consulenza AI Milano
+      - implementazione AI PMI
+    posts:
+      - slug: agenzia-ai-milano-come-scegliere
+        keyword: come scegliere un'agenzia ai a milano
+        volume: 90
+        kd: 12
+        target_word_count: 1500
+        status: pending
+        pillar: true
+        planned_for: 2026-05-04
+      - slug: agenzia-ai-milano-costi
+        keyword: costi agenzia ai milano
+        volume: 70
+        kd: 18
+        target_word_count: 1300
+        status: pending
+        pillar: false
+      - slug: agenzia-ai-vs-consulenza-interna
+        keyword: agenzia ai vs team interno
+        volume: 50
+        kd: 22
+        target_word_count: 1400
+        status: pending
+        pillar: false
+      - slug: roi-consulenza-ai-pmi
+        keyword: roi consulenza ai pmi
+        volume: 40
+        kd: 15
+        target_word_count: 1300
+        status: pending
+        pillar: false
+      - slug: agenzia-ai-domande-da-fare
+        keyword: domande da fare a un'agenzia ai
+        volume: 30
+        kd: 10
+        target_word_count: 1200
+        status: pending
+        pillar: false
+
+  - cluster_id: automazioni-pmi
+    pillar_keyword: automazioni ai per pmi
+    intent: informational
+    semantic_neighbors:
+      - workflow automation
+      - automazione processi aziendali
+      - n8n vs zapier vs make
+    posts:
+      - slug: automazioni-ai-pmi-guida
+        keyword: automazioni ai per pmi guida pratica
+        volume: 110
+        kd: 14
+        target_word_count: 1800
+        status: pending
+        pillar: true
+        planned_for: 2026-05-11
+      - slug: automatizzare-vendite-b2b
+        keyword: automatizzare vendite b2b
+        volume: 80
+        kd: 20
+        target_word_count: 1500
+        status: pending
+        pillar: false
+      - slug: automazione-customer-support-ai
+        keyword: automazione customer support ai
+        volume: 90
+        kd: 22
+        target_word_count: 1500
+        status: pending
+        pillar: false
+      - slug: agenti-ai-vs-zapier
+        keyword: agenti ai vs zapier
+        volume: 50
+        kd: 16
+        target_word_count: 1400
+        status: pending
+        pillar: false
+      - slug: errori-comuni-automazioni-pmi
+        keyword: errori automazioni ai pmi
+        volume: 40
+        kd: 12
+        target_word_count: 1300
+        status: pending
+        pillar: false
+
+  - cluster_id: agenti-ai-aziende
+    pillar_keyword: agenti ai per aziende italiane
+    intent: informational
+    semantic_neighbors:
+      - AI agent
+      - tool calling
+      - claude agent sdk
+      - llm agent
+    posts:
+      - slug: cosa-sono-agenti-ai
+        keyword: cosa sono gli agenti ai
+        volume: 200
+        kd: 18
+        target_word_count: 1700
+        status: pending
+        pillar: true
+        planned_for: 2026-05-18
+      - slug: agente-ai-per-cold-email
+        keyword: agente ai cold email
+        volume: 60
+        kd: 14
+        target_word_count: 1400
+        status: pending
+        pillar: false
+      - slug: agente-ai-per-supporto-clienti
+        keyword: agente ai supporto clienti
+        volume: 70
+        kd: 17
+        target_word_count: 1500
+        status: pending
+        pillar: false
+      - slug: agente-ai-vs-chatbot-tradizionale
+        keyword: agente ai vs chatbot
+        volume: 80
+        kd: 19
+        target_word_count: 1400
+        status: pending
+        pillar: false
+      - slug: come-costruire-agente-ai-aziendale
+        keyword: come costruire un agente ai
+        volume: 50
+        kd: 15
+        target_word_count: 1600
+        status: pending
+        pillar: false
+
+  - cluster_id: ai-vendite-b2b
+    pillar_keyword: ai per le vendite b2b
+    intent: commercial
+    semantic_neighbors:
+      - lead qualification AI
+      - sales automation
+      - outreach AI
+    posts:
+      - slug: ai-vendite-b2b-guida
+        keyword: ai per vendite b2b
+        volume: 70
+        kd: 16
+        target_word_count: 1600
+        status: pending
+        pillar: true
+        planned_for: 2026-05-25
+      - slug: ai-lead-qualification
+        keyword: ai lead qualification italia
+        volume: 40
+        kd: 12
+        target_word_count: 1400
+        status: pending
+        pillar: false
+      - slug: cold-email-ai-italiano
+        keyword: cold email ai italiano
+        volume: 30
+        kd: 10
+        target_word_count: 1300
+        status: pending
+        pillar: false
+      - slug: instantly-ai-tutorial-italiano
+        keyword: instantly ai tutorial italiano
+        volume: 50
+        kd: 8
+        target_word_count: 1500
+        status: pending
+        pillar: false
+      - slug: pipeline-vendite-b2b-ai
+        keyword: pipeline vendite b2b ai
+        volume: 35
+        kd: 14
+        target_word_count: 1400
+        status: pending
+        pillar: false
+
+  - cluster_id: consulenza-ai
+    pillar_keyword: consulenza intelligenza artificiale
+    intent: commercial
+    semantic_neighbors:
+      - audit AI
+      - implementation roadmap
+      - AI strategy
+    posts:
+      - slug: consulenza-ai-cosa-aspettarsi
+        keyword: consulenza intelligenza artificiale
+        volume: 150
+        kd: 20
+        target_word_count: 1700
+        status: pending
+        pillar: true
+        planned_for: 2026-06-01
+      - slug: audit-ai-aziendale-cosa-include
+        keyword: audit ai aziendale
+        volume: 40
+        kd: 10
+        target_word_count: 1300
+        status: pending
+        pillar: false
+      - slug: roadmap-implementazione-ai
+        keyword: roadmap implementazione ai pmi
+        volume: 30
+        kd: 8
+        target_word_count: 1400
+        status: pending
+        pillar: false
+      - slug: scegliere-consulente-ai
+        keyword: come scegliere consulente ai
+        volume: 50
+        kd: 12
+        target_word_count: 1300
+        status: pending
+        pillar: false
+      - slug: consulenza-ai-tariffe-italia
+        keyword: tariffe consulenza ai italia
+        volume: 60
+        kd: 14
+        target_word_count: 1300
+        status: pending
+        pillar: false

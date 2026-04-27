@@ -1,0 +1,24 @@
+name: polara
+active: true
+site:
+  url: https://polara-ai.com
+  cms: wordpress
+  # IONOS Managed WP filters /wp-json/wp/v2/* writes via the Essentials mu-plugin.
+  # XML-RPC is unfiltered and works with the same App Password. Switch to "rest"
+  # if migrating to a non-IONOS host.
+  api: xmlrpc
+  api_user_env: POLARA_WP_USER
+  api_password_env: POLARA_WP_APP_PASSWORD
+language: it
+cadence: weekly
+publish_day: mon
+publish_time: "09:00"
+timezone: Europe/Rome
+min_quality_score: 75
+voice_file: brand-voice.md
+# 0 = use the existing bot's TELEGRAM_ALLOWED_CHAT_ID env var (Luca's personal
+# chat). Set to a different chat_id only if a client wants previews routed to
+# a dedicated channel instead of the main bot.
+telegram_chat_id: 0
+audit_file: audit.yaml
+content_plan_file: content-plan.yaml

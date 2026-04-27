@@ -1,0 +1,14 @@
+entries:
+- date: '2026-04-27T10:35:39'
+  slug: agenzia-ai-milano-come-scegliere
+  keyword: come scegliere un'agenzia ai a milano
+  cluster_id: agenzia-ai-milano
+  status: validation_failed
+  quality_score: 72
+  schema_ok: true
+  preview_file: C:\Users\lucae\Desktop\CC Business OS\CC Business OS\business-os\workspace\active\seo-engine-previews\2026-04-27-polara-agenzia-ai-milano-come-scegliere.md
+  issues:
+  - word count 1198 < min 1200
+  - target keyword missing from meta_description
+  - target keyword missing from first 100 words
+  - no internal links (need >=1 if candidates exist)

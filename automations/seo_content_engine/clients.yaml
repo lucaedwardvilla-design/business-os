@@ -1,0 +1,17 @@
+# Active client registry for the SEO content engine.
+# The daily tick reads this file, then loads each active client's
+# clients/{name}/seo-engine/client.yaml for its full config.
+#
+# To onboard: see ../README.md (Onboarding Playbook).
+
+clients:
+  - name: polara
+    active: true            # first client. Flip false to pause.
+  - name: wayrent
+    active: false           # onboard once site is fully migrated
+  - name: amperry
+    active: false
+  - name: spods
+    active: false
+  - name: olympia-srl
+    active: false

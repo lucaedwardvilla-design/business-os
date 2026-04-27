@@ -1,0 +1,45 @@
+# Engine-readable audit summary for Polara AI.
+#
+# Refreshed monthly by the seo-engine-audit-refresh routine, which runs
+# /seo-audit https://polara-ai.com and post-processes the output into this
+# shape. The engine reads this file every cycle and bakes the constraints
+# into the generation prompt.
+#
+# Until hosting is live and the first refresh runs, this file holds the
+# 2026-04-15 baseline manually distilled from
+# clients/polara/websites/polara-landing/SEO-AUDIT.md.
+
+last_run: "2026-04-15"
+overall_score: 26
+source_audit: clients/polara/websites/polara-landing/SEO-AUDIT.md
+
+# Things content should help address (where natural). The engine surfaces
+# these to the prompt as "address-or-avoid" constraints.
+critical_issues:
+  - "Site has zero E-E-A-T signals. Every post must include 1-2 concrete client examples (named tool, real numbers, real workflow) to build experience signal."
+  - "No author bio yet on site. Posts must reference Polara AI as a Milan-based AI agency with hands-on B2B SaaS automation experience."
+  - "No internal blog architecture. First 5 posts establish pillar topology — be especially careful with internal link slugs in the prompt output."
+
+# Phrases or patterns the engine must NOT include this month (e.g. claims
+# the site can't substantiate yet, broken links, deprecated services).
+avoid:
+  - "non ancora pubblicati case study (link a pagine /case-studies/ che non esistono)"
+  - "claim di clientela 'Fortune 500' o 'enterprise globali' (target è PMI italiane)"
+  - "promesse di 'risultati garantiti in X giorni'"
+
+# Optional cluster prioritization for the next cycle (engine picks pillar-first
+# within priority clusters before any non-priority cluster slot).
+priority_clusters:
+  - agenzia-ai-milano       # commercial intent, brand defense
+  - agenti-ai-aziende       # high-volume informational, builds topical authority
+
+# Optional word-count overrides (else engine uses slot.target_word_count + buffer)
+min_word_count: 1200
+max_word_count: 2200
+
+# Free-form notes for human review — not consumed by the engine.
+notes: |
+  Foundations are still at 26/100 — do not activate the engine until the WP
+  site has: meta descriptions, schema, working legal pages, sitemap submitted
+  to Search Console. Once those are in, refresh this audit and flip
+  clients.yaml -> polara active=true.
